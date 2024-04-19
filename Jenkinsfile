@@ -13,7 +13,7 @@ pipeline {
         stage('Deploy to DEV') {
             steps {
                 script{
-                    deploy("DEV")
+                    deploy("DEV", 1010) // 1010
                 }
             }
         }
@@ -29,7 +29,7 @@ pipeline {
         stage('Deploy to STG') {
             steps {
                 script{
-                    deploy("STG")
+                    deploy("STG", 1020) // 1020
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
         stage('Deploy to PRD') {
             steps {
                 script{
-                    deploy("PRD")
+                    deploy("PRD", 1030) // 1030
                 }
             }
         }
@@ -60,14 +60,20 @@ pipeline {
     }
 }
 
-def deploy(String enviroment) {
+def deploy(String enviroment, int port) {
     echo "Deployment to ${enviroment} has started ..."
+    bat "pm2 delete ${enviroment}"
+    bat "pm2 start -n \"${enviroment}\" index.js -- ${port}"
 }
 
 def test(String enviroment) {
     echo "Testing on ${enviroment} has started ..."
+    bat "npm test"
 }
 
 def build(){
     echo 'Building of node application is starting ...'
+    bat "ls"
+    bat "npm install"
+
 }
