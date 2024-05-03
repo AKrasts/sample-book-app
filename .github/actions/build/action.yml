@@ -3,8 +3,8 @@ runs:
   steps:
     - name: --- build success ---
       run: echo Building of node application is starting ...
-      shell: bash
+      shell: cmd
       
     - name: Install dependencies
       run: npm install
-      shell: bash
+      shell: cmd
