@@ -71,6 +71,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 'AKrasts/api-automation'
+          path: 'api-tests'
       - uses: ./.github/actions/test
         with:
           enviroment: 'STG'
@@ -94,6 +98,10 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 'AKrasts/api-automation'
+          path: 'api-tests'
       - uses: ./.github/actions/test
         with:
           enviroment: 'PRD'
