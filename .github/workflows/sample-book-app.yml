@@ -53,8 +53,10 @@ jobs:
     needs: [deploy-dev]
 
     steps:
-      - name: --- tests success ---
-        run: echo Testing on DEV has started ...
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test
+        with:
+          enviroment: 'DEV'
   
   deploy-stg:
     name: Deploy STG
@@ -62,8 +64,11 @@ jobs:
     needs: [tests-dev]
 
     steps:
-      - name: --- deploy success ---
-        run: echo Deployment to STG has started ...
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          port: 6789
+          enviroment: 'STG'
 
   tests-stg:
     name: Tests STG
@@ -71,8 +76,10 @@ jobs:
     needs: [deploy-stg]
 
     steps:
-      - name: --- tests success ---
-        run: echo Testing on STG has started ...
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test
+        with:
+          enviroment: 'STG'
 
   deploy-prd:
     name: Deploy PRD
@@ -80,8 +87,11 @@ jobs:
     needs: [tests-stg]
     
     steps:
-      - name: --- deploy success ---
-        run: echo Deployment to PRD has started ...
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/deploy
+        with:
+          port: 1111
+          enviroment: 'PRD'
 
   tests-prd:
     name: Tests PRD
@@ -89,7 +99,8 @@ jobs:
     needs: [deploy-prd]
     
     steps:
-      - name: --- tests success ---
-        run: echo Testing on PRD has started ...
-
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/test
+        with:
+          enviroment: 'PRD'
 

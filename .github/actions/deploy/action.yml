@@ -31,5 +31,3 @@ runs:
     - name: Check services
       run: pm2 list
       shell: bash
-    #    bat "pm2 delete ${enviroment}"
-    # bat "pm2 start -n ${{ inputs.enviroment }} index.js -- ${port}"
