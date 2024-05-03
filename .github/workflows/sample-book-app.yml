@@ -30,7 +30,7 @@ jobs:
         run: node -v
       
       - name: --- check node and npm version ---
-        run: 
+        run: |
           node -v
           npm -v
 
