@@ -21,18 +21,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v3
-
-      - name: --- build success ---
-        run: echo Building of node application is starting ...
-
-      - name: --- check node version ---
-        run: node -v
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/build
       
-      - name: --- check node and npm version ---
-        run: |
-          node -v
-          npm -v
+      # - name: --- build success ---
+      #   run: echo Building of node application is starting ...
+      
+      # - name: --- check node and npm version ---
+      #   run: |
+      #     node -v
+      #     npm -v
+      #     pm2 delete ${enviroment}
+      #     pm2 start -n \"${enviroment}\" index.js -- ${port}
+
 
   deploy-dev:
     name: Deploy DEV
