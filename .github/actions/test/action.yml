@@ -7,15 +7,15 @@ runs:
   steps:
     - name: Print output
       run: echo Testing on ${{ inputs.enviroment }} has started ...
-      shell: bash
+      shell: cmd
 
     # - name: Install dependencies and pm2
     #   run: | 
     #     npm install
     #     npm install -g pm2
     #     pm2 start -n ${{ inputs.enviroment }} index.js
-    #   shell: bash
+    #   shell: cmd
 
     - name: Start test
       run: npm test
-      shell: bash
+      shell: cmd
