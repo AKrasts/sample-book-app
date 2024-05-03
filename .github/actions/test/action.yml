@@ -16,6 +16,6 @@ runs:
     #     pm2 start -n ${{ inputs.enviroment }} index.js
     #   shell: cmd
 
-    - name: Start test
-      run: npm test
-      shell: cmd
+    # - name: Start test
+    #   run: npm test
+    #   shell: cmd

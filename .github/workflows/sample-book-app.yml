@@ -24,16 +24,6 @@ jobs:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/build
 
-      # - name: --- build success ---
-      #   run: echo Building of node application is starting ...
-      
-      # - name: --- check node and npm version ---
-      #   run: |
-      #     node -v
-      #     npm -v
-      #     pm2 delete ${enviroment}
-      #     pm2 start -n \"${enviroment}\" index.js -- ${port}
-
 
   deploy-dev:
     name: Deploy DEV
@@ -54,6 +44,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          repository: 'AKrasts/api-automation'
+          path: 'api-tests'
       - uses: ./.github/actions/test
         with:
           enviroment: 'DEV'
