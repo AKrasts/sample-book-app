@@ -28,6 +28,6 @@ runs:
       run: pm2 start -n ${{ inputs.enviroment }} index.js -- ${{ inputs.port }}
       shell: bash
 
-    - name: Check services
-      run: pm2 list
-      shell: bash
+    # - name: Check services
+    #   run: pm2 list
+    #   shell: bash
