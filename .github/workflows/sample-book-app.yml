@@ -28,6 +28,11 @@ jobs:
 
       - name: --- check node version ---
         run: node -v
+      
+      - name: --- check node and npm version ---
+        run: 
+          node -v
+          npm -v
 
   deploy-dev:
     name: Deploy DEV
